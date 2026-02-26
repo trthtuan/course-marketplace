@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Online Course</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Progress Indicator -->
+        <div class="progress-container">
+            <div class="step completed">
+                <div class="step-circle">✓</div>
+                <div class="step-label">Checkout Information</div>
+            </div>
+            <div class="step active">
+                <div class="step-circle">2</div>
+                <div class="step-label">Payment</div>
+            </div>
+            <div class="step">
+                <div class="step-circle">3</div>
+                <div class="step-label">Course Activated</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Left Column: Order Details -->
+            <div class="col-left">
+                <div class="card">
+                    <h2>Order Details</h2>
+                    <table class="details-table">
+                        <tr>
+                            <th>Order ID</th>
+                            <td id="displayOrderId">Loading...</td>
+                        </tr>
+                        <tr>
+                            <th>Date</th>
+                            <td id="displayDate">Loading...</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td id="displayEmail">Loading...</td>
+                        </tr>
+                        <tr>
+                            <th>Phone</th>
+                            <td id="displayPhone">Loading...</td>
+                        </tr>
+                        <tr>
+                            <th>Payment Method</th>
+                            <td>QR Code</td>
+                        </tr>
+                        <tr>
+                            <th>Total Amount</th>
+                            <td class="price" id="displayAmount">Loading...</td>
+                        </tr>
+                    </table>
+                    
+                    <!-- Hidden button for testing -->
+                    <button id="btnSimulatePayment" class="btn" style="margin-top: 30px; background-color: #4caf50;">[Dev] Simulate Payment Success</button>
+                </div>
+            </div>
+            
+            <!-- Right Column: Payment -->
+            <div class="col-right">
+                <div class="card">
+                    <div class="tabs">
+                        <div class="tab active" data-tab="qr">Scan QR Code</div>
+                        <div class="tab" data-tab="bank">Bank Transfer Info</div>
+                    </div>
+                    
+                    <div id="tab-qr" class="tab-content active">
+                        <div class="qr-container">
+                            <img id="qrImage" src="" alt="VietQR Code" class="qr-image">
+                            
+                            <div class="instructions">
+                                <h4>Payment Instructions</h4>
+                                <ol>
+                                    <li>Open your banking app</li>
+                                    <li>Scan the QR code</li>
+                                    <li>Complete payment</li>
+                                    <li>Wait 1–3 minutes for automatic activation</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="tab-bank" class="tab-content">
+                        <div class="instructions">
+                            <h4>Bank Transfer Details</h4>
+                            <p><strong>Bank:</strong> MB Bank</p>
+                            <p><strong>Account Name:</strong> ONLINE COURSE CO.</p>
+                            <p><strong>Account Number:</strong> 123456789</p>
+                            <p><strong>Amount:</strong> <span id="bankAmount">139,999 đ</span></p>
+                            <p><strong>Message:</strong> <span id="bankMessage">ORD...</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="payment.js"></script>
+</body>
+</html>

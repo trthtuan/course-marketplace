@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Success - Online Course</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Progress Indicator -->
+        <div class="progress-container">
+            <div class="step completed">
+                <div class="step-circle">✓</div>
+                <div class="step-label">Checkout Information</div>
+            </div>
+            <div class="step completed">
+                <div class="step-circle">✓</div>
+                <div class="step-label">Payment</div>
+            </div>
+            <div class="step completed">
+                <div class="step-circle">✓</div>
+                <div class="step-label">Course Activated</div>
+            </div>
+        </div>
+
+        <div class="success-container">
+            <div class="card">
+                <div class="success-icon">✓</div>
+                <h2>Payment Successful</h2>
+                <p style="margin-bottom: 30px; color: #555;">Your course has been activated successfully.</p>
+                
+                <table class="details-table" style="margin-bottom: 30px;">
+                    <tr>
+                        <th>Order ID</th>
+                        <td id="displayOrderId">Loading...</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td id="displayEmail">Loading...</td>
+                    </tr>
+                    <tr>
+                        <th>Amount Paid</th>
+                        <td class="price" id="displayAmount">Loading...</td>
+                    </tr>
+                </table>
+                
+                <a href="/" class="btn btn-red">Go to My Courses</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('orderId');
+
+            if (orderId) {
+                const orderData = localStorage.getItem(`order_${orderId}`);
+                if (orderData) {
+                    const order = JSON.parse(orderData);
+                    document.getElementById('displayOrderId').textContent = order.id;
+                    document.getElementById('displayEmail').textContent = order.email;
+                    document.getElementById('displayAmount').textContent = new Intl.NumberFormat('vi-VN').format(order.amount) + ' đ';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
