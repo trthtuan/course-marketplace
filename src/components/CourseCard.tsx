@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import { Course } from '../data/courses';
-import { Users, Eye } from 'lucide-react';
-import React from 'react';
+import { Link } from "react-router-dom";
+import { Course } from "../data/courses";
+import { Users, Eye } from "lucide-react";
+import React from "react";
 
 interface CourseCardProps {
   course: Course;
@@ -9,7 +9,7 @@ interface CourseCardProps {
 
 const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
   const discountPercentage = Math.round(
-    ((course.originalPrice - course.price) / course.originalPrice) * 100
+    ((course.originalPrice - course.price) / course.originalPrice) * 100,
   );
 
   // Mock view count
@@ -30,18 +30,20 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
             Bestseller
           </div>
         </div>
-        
+
         <div className="p-4 flex flex-col flex-grow">
           {/* 2. Course title */}
           <h3 className="font-bold text-gray-900 line-clamp-2 mb-1 group-hover:text-indigo-600 transition-colors">
             {course.title}
           </h3>
           <p className="text-sm text-gray-500 mb-3">{course.instructor}</p>
-          
+
           <div className="mt-auto flex flex-col">
             {/* 3. Price */}
             <div className="flex items-end space-x-2 mb-3">
-              <span className="text-lg font-bold text-gray-900">${course.price}</span>
+              <span className="text-lg font-bold text-gray-900">
+                ${course.price}
+              </span>
               <span className="text-sm text-gray-400 line-through mb-0.5">
                 ${course.originalPrice}
               </span>
